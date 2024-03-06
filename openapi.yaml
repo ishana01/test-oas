@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title: My API
+  version: 1.0.0
+  description: This is a sample API using OpenAPI 3.0.3 specification.
+paths:
+  /users:
+    get:
+      summary: Get a list of users
+      operationId: getUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string

@@ -1,0 +1,20 @@
+checks:
+  - name: Authentication Required
+    category: Security
+    description: Check if some form of authentication is required
+    severity: high
+    condition:
+      type: field_exists
+      field: components.security
+  - name: Correct Data Types Used
+    category: Data Validation
+    description: Check if correct data types are used in schema definitions
+    severity: medium
+    condition:
+      type: all_of
+      conditions:
+        - type: field_exists
+          field: components.schemas
+        - type: field_in_set
+          field: components.schemas[*].type
+          set: [string, number, integer, boolean, array, object]
